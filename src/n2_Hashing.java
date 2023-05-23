@@ -14,7 +14,7 @@ public class n2_Hashing implements Perfect_Hashing_Interface{
     private long b;
 
     public n2_Hashing(int size) throws InterruptedException {
-        sizeOfTable = (int) pow(size,2);
+        sizeOfTable = (int) pow(2, ceil(2*log(size)/log(2)));
         System.out.println("size is "+sizeOfTable);
         Random random = new Random();
         a = abs(random.nextLong()%(p-1-1+1)+1);

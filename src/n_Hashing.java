@@ -1,15 +1,14 @@
 import java.io.IOException;
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Random;
 
-import static java.lang.Math.abs;
-import static java.lang.Math.pow;
+import static java.lang.Math.*;
+import static java.lang.Math.log;
 
 public class n_Hashing implements Perfect_Hashing_Interface {
-    
-private class secondLevel{
+
+    private class secondLevel{
         private String[] internalValues;
         private ArrayList<String> beforeHashing= new ArrayList();
         private long no_elements;
@@ -43,7 +42,7 @@ private class secondLevel{
                 m = 1;
                 return 1;
             }
-            int index = (int)(hashFunction(toKey(value)));
+            int index = (int)(abs(hashFunction(abs(toKey(value)))));
             if(internalValues[index] == null){
                 internalValues[index] = value;
                 return 1;
@@ -58,7 +57,7 @@ private class secondLevel{
             }
         }
         public int[] hash() throws InterruptedException {
-        //    System.out.println("Rehash");
+            System.out.println("Rehash");
             Random random = new Random();
             a = abs(random.nextInt() + 5);
             b = abs(random.nextInt() + 5);
@@ -71,17 +70,17 @@ private class secondLevel{
             }
             if(causedRehash != null)
                 beforeHashing.add(causedRehash);
-           // System.out.println(beforeHashing.size());
+            // System.out.println(beforeHashing.size());
             //    causedRehash = null;
             String[] buffer = new String[(int)m];
-           // internalValues = new String[((int)(this.m))];
+            // internalValues = new String[((int)(this.m))];
 //            for(int i = 0; i < this.m; i++){
 //                internalValues[i] = null;
 //            }
             int[] returned = new int[2];
             for(String iter: beforeHashing){
-                long x=toKey(iter);
-                int index = (int)(hashFunction(x));
+                long x=abs(toKey(iter));
+                int index = (int)abs((hashFunction(x)));
                 if(iter.equals("iQPKEPXs")){
                     System.out.println("I'M IN rehash, current key is: "+ index);
                     System.out.println("In hash, Current a b is: " + this.a + " " + this.b);
@@ -101,15 +100,17 @@ private class secondLevel{
             returned[0] = 1;
             causedRehash = null;
             internalValues = new String[(int) m];
-
+            for(int i = 0; i < m ; i++){
+                internalValues[i] = buffer[i];
+            }
             return returned;
         }
         public boolean search(String wanted) {
             if(internalValues == null)
                 return false;
             System.out.println(wanted);
-            long x= toKey(wanted);
-            int index = (int)hashFunction(toKey(wanted));
+            long x= abs(toKey(wanted));
+            int index = (int)abs(hashFunction(x));
             if(wanted.equals("iQPKEPXs")){
                 System.out.println("I'M IN SEARCH, current key is: "+ index);
                 System.out.println("In search, Current a b is: " + this.a + " "+ this.b);
@@ -118,7 +119,7 @@ private class secondLevel{
             return Objects.equals(internalValues[index], wanted);
         }
         public boolean delete(String value) {
-            int index = (int)hashFunction(toKey(value));
+            int index = (int)abs(hashFunction(abs(toKey(value))));
             if(internalValues[index] == null)
             {
                 return false;
@@ -132,7 +133,7 @@ private class secondLevel{
                 }
             }
         }
-}
+    }
 
     private secondLevel[] mainHashing;
     private long p = 5000000021L; // A prime that's bigger than a, (x-y) where x and y are the two keys
@@ -140,8 +141,8 @@ private class secondLevel{
     private long a;
     private long b;
     public n_Hashing(int size){
-        m = size;
-        mainHashing = new secondLevel[size];
+        m = (int) pow(2, ceil(log(size)/log(2)));
+        mainHashing = new secondLevel[(int) m];
         Random random = new Random();
         a = abs(random.nextInt() + 5);
         b = abs(random.nextInt() + 5);
@@ -164,14 +165,14 @@ private class secondLevel{
         return (a*number+b)%p%m;
     }
     public boolean search(String value){
-        int key = (int)hashFunction(toKey(value));
+        int key = (int)abs(hashFunction(abs(toKey(value))));
         if(value.equals("iQPKEPXs")){
             System.out.println("searching for me? I'm what you want, key is: "+ key);
         }
         return mainHashing[key].search(value);
     }
     public int insert(String value) throws InterruptedException {
-        int key = (int)hashFunction(toKey(value));
+        int key = (int)abs(hashFunction(abs(toKey(value))));
         if(value.equals("iQPKEPXs")){
             System.out.println("I'm what you want, key is: "+ key);
         }
@@ -195,7 +196,7 @@ private class secondLevel{
         }
     }
     public boolean delete(String value) throws IOException{ // True if deleted, false if not
-        int key = (int)hashFunction(toKey(value));
+        int key = (int)abs(hashFunction(abs(toKey(value))));
         return mainHashing[key].delete(value);
     }
     public int getSize(){
@@ -211,5 +212,5 @@ private class secondLevel{
 
 
 
-    
+
 }

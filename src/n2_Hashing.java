@@ -7,7 +7,7 @@ import java.util.Random;
 import static java.lang.Math.*;
 public class n2_Hashing implements Perfect_Hashing_Interface{
     String[] hashTable;
-    private long p = 50000007L; // A prime that's bigger than a, (x-y) where x and y are the two keys
+    private long p = 50000007L;   // A prime that's bigger than a, (x-y) where x and y are the two keys
     private final int sizeOfTable;
     long numberofelements=0;
     private long a;
@@ -19,32 +19,28 @@ public class n2_Hashing implements Perfect_Hashing_Interface{
         Random random = new Random();
         a = abs(random.nextLong()%(p-1-1+1)+1);
         b = abs(random.nextLong()%(p-1-0+1));
-        // System.out.println("a is "+a+" b is "+b);
+        System.out.println("a is "+a+" b is "+b);
         hashTable = new String[sizeOfTable];
         Thread.sleep(5000);
     }
-    private boolean rehash2(String value){
+    private boolean rehash2(ArrayList<String> myarray,String value){
+        System.out.println("i am rehashing "+value);
         Random random = new Random();
         a = abs(random.nextLong()%((p-1)-1+1)+1);
         b = abs(random.nextLong()%((p-1)-0+1));
-        // System.out.println("a is "+a+" b is "+b);
-        String[] prevtable = hashTable;
-        hashTable = new String[sizeOfTable];
+        System.out.println("a is "+a+" b is "+b);
         int key;
-        for(int i=0;i<sizeOfTable;i++){
-            if(prevtable[i]!=null){
-                key=hashFunction(toKey(prevtable[i]));
-                if(hashTable[key]!=null){
-                    hashTable=prevtable;
-                    return false;
-                }else{
-                    hashTable[key]=prevtable[i];
-                }
+        
+        for(int i=0;i<myarray.size();i++){
+            key=hashFunction(toKey(myarray.get(i)));
+            if(hashTable[key]==null){
+                hashTable[key]=myarray.get(i);
+            }else{
+                return false;
             }
         }
         key=hashFunction(toKey(value));
         if(hashTable[key]!=null){
-            hashTable=prevtable;
             return false;
         }else{
             hashTable[key]=value;
@@ -71,7 +67,6 @@ public class n2_Hashing implements Perfect_Hashing_Interface{
     public int insert(String value) {
         if (numberofelements == sizeOfTable) {
             int index=hashFunction(toKey(value));
-            // System.out.println("index is "+index);
             if(!Objects.equals(hashTable[index],value)){
                 return 3;
             }
@@ -86,10 +81,17 @@ public class n2_Hashing implements Perfect_Hashing_Interface{
                 if (hashTable[key].equals(value)) {
                     return 0;
                 } else {
+                    ArrayList<String> currelements=new ArrayList<>();
+                    for(int i=0;i<sizeOfTable;i++){
+                        if(hashTable[i]!=null){
+                            currelements.add(hashTable[i]);
+                            hashTable[i]=null;
+                        }
+                    }
                     boolean check=false;
                     int count=0;
                     while (!check) {
-                        check = rehash2(value);
+                        check = rehash2(currelements,value);
                         count++;   // number of rehashings
                     }
                     numberofelements++;

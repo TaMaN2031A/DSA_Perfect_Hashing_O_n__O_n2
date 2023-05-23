@@ -36,8 +36,8 @@ public class CLI {
 
             }
         }
-        System.out.println("saba7o");
         while (size <= 0) {
+            try{
                 System.out.println("\033[0;32mInsert the value of N: \033");
                 size = sc.nextInt();
                 if (size < 0) {
@@ -45,16 +45,20 @@ public class CLI {
                 } else {
                     dictionary = new Dictionary(type, size);
                 }
-                System.out.print("\033\143");
-                // Thread.sleep(200);
-                // System.out.print("\033\143");
+                System.out.print("\033\143");}
+                catch (Exception e){
+                    System.out.println("Enter a Valid N!");
+                    sc.nextLine();
+                    Thread.sleep(1000);
+                    System.out.print("\033\143");
+                }
 
         }
 
         System.out.println("\033[0;32m" + type + " is Selected!\033[0m");
         System.out.println("\033[0;32m" + size + " is Selected!\033[0m");
-
-     //   Thread.sleep(2000);
+        sc.nextLine();
+        Thread.sleep(1000);
         String[] in;
 
             while (true) {

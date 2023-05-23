@@ -11,9 +11,10 @@ public class Dictionary {
     Perfect_Hashing_Interface hash;
     Factory factory = new Factory();
     long start,end;
-
+    int count;
 public Dictionary(String type, int size) throws InterruptedException{
         hash = factory.getPerfectHASHING(type, size);
+        count=0;
 }
 void BatchInsert(String route) throws IOException, InterruptedException {
         System.out.println("i am here ");
@@ -52,17 +53,20 @@ boolean search(String a) {
     }   
 int insert(String a) throws IOException, InterruptedException {
         int x = hash.insert(a);
-//        if(x == 0){
-//            System.out.println(a+" Already found");
-//        } else if(x == 1){
-//            System.out.println(a+ " Added successfully");
-//        }else if(x==2){
-//            System.out.println(a+" Added, but we rehashed the code");
-//        }else{
-//            System.out.println("Hash Table is Full!");
-//        }
+       if(x == 0){
+        //    System.out.println(a+" Already found");
+       } else if(x == 1){
+        count++;
+        //    System.out.println(a+ " Added successfully");
+       }else if(x==2){
+        count++;
+        //    System.out.println(a+" Added, but we rehashed the code");
+       }else{
+        //    System.out.println("Hash Table is Full!");
+       }
         return x;
     }
+
 void BatchDelete(String route) throws IOException, InterruptedException {
         start=System.nanoTime();
         Path path = Paths.get(route);
@@ -84,15 +88,17 @@ void BatchDelete(String route) throws IOException, InterruptedException {
     }  
 boolean delete(String a) throws IOException {
         boolean x = hash.delete(a);
-//        if(x){
-//            System.out.println(a+" Successfully Deleted");
-//        }else{
-//            System.out.println(a+" Doesn't exist");
-//        }
+       if(x){
+        count--;
+        //    System.out.println(a+" Successfully Deleted");
+       }else{
+        //    System.out.println(a+" Doesn't exist");
+       }
         return x;
     }
 long getSize(){
-        return hash.getElementsOfTable();
+           return count;
+        // return hash.getElementsOfTable();
     }
 void ends() throws IOException {
         System.out.println("\033[0;31mExecution Times have been writen in files!\033[0m");

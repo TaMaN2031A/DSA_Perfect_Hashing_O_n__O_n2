@@ -15,7 +15,7 @@ public class CLI {
     
     void options() {
         System.out.println("\033[0;31mChoose an Option from the following:\033[0m");
-        System.out.println("\033[0;34m1)Insert a new key.\n2)Delete an existing key.\n3)Search for a key.\n4)Batch insert.\n5)Batch Delete.\n6)size.\n7)Exit.\n\nEnter an Option:\033[0m");
+        System.out.println("\033[0;34m1)Insert a new key.\n2)Delete an existing key.\n3)Search for a key.\n4)Batch insert.\n5)Batch Delete.\n6)Exit.\n\nEnter an Option:\033[0m");
     }
 
 
@@ -30,7 +30,6 @@ public class CLI {
                     System.out.println("PLease Enter a Valid Option!");
                     Thread.sleep(1000);
                 }
-                // System.out.print("\033\143");
                System.out.print("\033\143");
             } catch (Exception e) {
 
@@ -47,6 +46,7 @@ public class CLI {
                 }
                 System.out.print("\033\143");}
                 catch (Exception e){
+                    System.out.print("\033\143");
                     System.out.println("Enter a Valid N!");
                     sc.nextLine();
                     Thread.sleep(1000);
@@ -56,7 +56,6 @@ public class CLI {
         }
 
         System.out.println("\033[0;32m" + type + " is Selected!\033[0m");
-        System.out.println("\033[0;32m" + size + " is Selected!\033[0m");
         sc.nextLine();
         Thread.sleep(1000);
         String[] in;
@@ -74,12 +73,6 @@ public class CLI {
                         dictionary.ends();
                         break;
                     }
-                    if (in[0].equals("size")) {
-                        System.out.println(dictionary.getSize());
-                        Thread.sleep(2500);
-                        continue;
-                    }
-
                     if (tokenizer.hasMoreElements()) {
                         in[1] = tokenizer.nextToken();
                     } else {

@@ -19,18 +19,15 @@ public class n2_Hashing implements Perfect_Hashing_Interface{
         Random random = new Random();
         a = abs(random.nextLong()%(p-1-1+1)+1);
         b = abs(random.nextLong()%(p-1-0+1));
-        System.out.println("a is "+a+" b is "+b);
         hashTable = new String[sizeOfTable];
-        Thread.sleep(5000);
+        Thread.sleep(2000);
     }
     private boolean rehash2(ArrayList<String> myarray,String value){
         System.out.println("i am rehashing "+value);
         Random random = new Random();
         a = abs(random.nextLong()%((p-1)-1+1)+1);
         b = abs(random.nextLong()%((p-1)-0+1));
-        System.out.println("a is "+a+" b is "+b);
-        int key;
-        
+        int key;      
         for(int i=0;i<myarray.size();i++){
             key=hashFunction(toKey(myarray.get(i)));
             if(hashTable[key]==null){
@@ -65,19 +62,12 @@ public class n2_Hashing implements Perfect_Hashing_Interface{
         return Objects.equals(hashTable[index], value);
     }
     public int insert(String value) {
-        if (numberofelements == sizeOfTable) {
-            int index=hashFunction(toKey(value));
-            if(!Objects.equals(hashTable[index],value)){
-                return 3;
-            }
-            return 0;
-        }else {
             int key = hashFunction(toKey(value));
             if (hashTable[key] == null) {
                 numberofelements++;
                 hashTable[key] = value;
                 return 1;
-            } else {
+            }else {
                 if (hashTable[key].equals(value)) {
                     return 0;
                 } else {
@@ -99,7 +89,6 @@ public class n2_Hashing implements Perfect_Hashing_Interface{
                     return 2;
                 }
             }
-        }
     }
     public boolean delete(String value) { // True if deleted, false if not
         int index = hashFunction(toKey(value));

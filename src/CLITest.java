@@ -15,14 +15,14 @@ public class CLITest {
     @Test
     public void test1_N2_insert_search_exist() throws IOException, InterruptedException {
         dictionary = new Dictionary("N2",5000);
-        String path ="C:\\Users\\LeNoVo\\Desktop\\gh\\src\\test1.txt";
+        String path ="/home/yousef/Downloads/nnnn/DSA_Perfect_Hashing_O_n__O_n2/src/test1.txt";
         dictionary.BatchInsert(path);
         assertEquals(dictionary.search("FBCBAC"), true);
     }
     @Test
     public void test1_N2_insert_search_not_exist() throws IOException, InterruptedException {
         dictionary = new Dictionary("N2",5000);
-        String path ="C:\\Users\\LeNoVo\\Desktop\\gh\\src\\test1.txt";
+        String path ="/home/yousef/Downloads/nnnn/DSA_Perfect_Hashing_O_n__O_n2/src/test1.txt";
         dictionary.BatchInsert(path);
         assertEquals(dictionary.search("Ana M4 Hena"), false);
     }
@@ -30,7 +30,7 @@ public class CLITest {
     public void test2_N2_insert_found_delete_not_found() throws IOException, InterruptedException {
         //file above 1000 words with 22 unique, search for exisiting then delete it, then research
         dictionary = new Dictionary("N2",5000);
-        String path ="C:\\Users\\LeNoVo\\Desktop\\gh\\src\\test2.txt";
+        String path ="/home/yousef/Downloads/nnnn/DSA_Perfect_Hashing_O_n__O_n2/src/test2.txt";
         dictionary.BatchInsert(path);
         assertEquals(dictionary.search("FFFFFF"), true);
         dictionary.delete("FFFFFF");
@@ -40,7 +40,7 @@ public class CLITest {
     public void test3_N2_insert_search_not_found_insert_found() throws IOException, InterruptedException {
 
         dictionary = new Dictionary("N2",5000);
-        String path ="C:\\Users\\LeNoVo\\Desktop\\gh\\src\\test3.txt";
+        String path ="/home/yousef/Downloads/nnnn/DSA_Perfect_Hashing_O_n__O_n2/src/test3.txt";
         assertEquals(dictionary.search("sTahnqJcskUMiOiWSsTH"), false);
         dictionary.BatchInsert(path);
         assertEquals(dictionary.search("sTahnqJcskUMiOiWSsTH"), true);
@@ -49,7 +49,7 @@ public class CLITest {
     public void test5_N2_insert_emptyfile_not_found_insert_found() throws IOException, InterruptedException {
         //empty file
         dictionary = new Dictionary("N2",5000);
-        String path ="C:\\Users\\LeNoVo\\Desktop\\gh\\src\\test6.txt";
+        String path ="/home/yousef/Downloads/nnnn/DSA_Perfect_Hashing_O_n__O_n2/src/test6.txt";
         dictionary.BatchInsert(path);
         assertEquals(dictionary.search("Any thing"), false);
         dictionary.insert("Any thing");
@@ -59,7 +59,7 @@ public class CLITest {
     public void test7_N2_deleteall() throws IOException, InterruptedException {
         //delete all
         dictionary = new Dictionary("N2",5000);
-        String path ="C:\\Users\\LeNoVo\\Desktop\\gh\\src\\test3.txt";
+        String path ="/home/yousef/Downloads/nnnn/DSA_Perfect_Hashing_O_n__O_n2/src/test3.txt";
         dictionary.BatchInsert(path);
         assertEquals(dictionary.search("NZqVpZTFgFkGRoEEXdhM"), true);
         dictionary.BatchDelete(path);
@@ -70,8 +70,8 @@ public class CLITest {
         //delete some elm from many elm
         //add add delete
         dictionary = new Dictionary("N2",6000);
-        String path1 ="C:\\Users\\LeNoVo\\Desktop\\gh\\src\\test1.txt";
-        String path3="C:\\Users\\LeNoVo\\Desktop\\gh\\src\\test3.txt";
+        String path1 ="/home/yousef/Downloads/nnnn/DSA_Perfect_Hashing_O_n__O_n2/src/test1.txt";
+        String path3="/home/yousef/Downloads/nnnn/DSA_Perfect_Hashing_O_n__O_n2/src/test3.txt";
         dictionary.BatchInsert(path1);
         assertEquals(dictionary.search("FBCBAC"), true);
         dictionary.BatchInsert(path3);
@@ -84,8 +84,8 @@ public class CLITest {
         //delete some elm from many elm
         //add  delete add
         dictionary = new Dictionary("N2",6000);
-        String path1 ="C:\\Users\\LeNoVo\\Desktop\\gh\\src\\test1.txt";
-        String path3="C:\\Users\\LeNoVo\\Desktop\\gh\\src\\test3.txt";
+        String path1 ="/home/yousef/Downloads/nnnn/DSA_Perfect_Hashing_O_n__O_n2/src/test1.txt";
+        String path3="/home/yousef/Downloads/nnnn/DSA_Perfect_Hashing_O_n__O_n2/src/test3.txt";
         dictionary.BatchInsert(path3);
         assertEquals(dictionary.search("rDYuTxZZiwyuCcIqXljy"), true);
         assertEquals(dictionary.search("FBCBAC"), false);
@@ -102,14 +102,14 @@ public class CLITest {
     @Test
     public void test1_N_insert_search_exist() throws IOException, InterruptedException {
         dictionary = new Dictionary("N2",5000);
-        String path ="C:\\Users\\LeNoVo\\Desktop\\gh\\src\\test1.txt";
+        String path ="/home/yousef/Downloads/nnnn/DSA_Perfect_Hashing_O_n__O_n2/src/test1.txt";
         dictionary.BatchInsert(path);
         assertEquals(dictionary.search("FBCBAC"), true);
     }
     @Test
     public void test2_N_insert_search_not_exist() throws IOException, InterruptedException {
         dictionary = new Dictionary("N2",5000);
-        String path ="C:\\Users\\LeNoVo\\Desktop\\gh\\src\\test1.txt";
+        String path ="/home/yousef/Downloads/nnnn/DSA_Perfect_Hashing_O_n__O_n2/src/test1.txt";
         dictionary.BatchInsert(path);
         assertEquals(dictionary.search("Ana M4 Hena"), false);
     }
@@ -117,7 +117,7 @@ public class CLITest {
     public void test3_N_insert_found_delete_not_found() throws IOException, InterruptedException {
         //file above 1000 words with 22 unique, search for exisiting then delete it, then research
         dictionary = new Dictionary("N2",5000);
-        String path ="C:\\Users\\LeNoVo\\Desktop\\gh\\src\\test2.txt";
+        String path ="/home/yousef/Downloads/nnnn/DSA_Perfect_Hashing_O_n__O_n2/src/test2.txt";
         dictionary.BatchInsert(path);
         assertEquals(dictionary.search("FFFFFF"), true);
         dictionary.delete("FFFFFF");
@@ -127,16 +127,17 @@ public class CLITest {
     public void test4_N_insert_search_not_found_insert_found() throws IOException, InterruptedException {
 
         dictionary = new Dictionary("N2",5000);
-        String path ="C:\\Users\\LeNoVo\\Desktop\\gh\\src\\test3.txt";
+        String path ="/home/yousef/Downloads/nnnn/DSA_Perfect_Hashing_O_n__O_n2/src/test3.txt";
         assertEquals(dictionary.search("sTahnqJcskUMiOiWSsTH"), false);
         dictionary.BatchInsert(path);
         assertEquals(dictionary.search("sTahnqJcskUMiOiWSsTH"), true);
     }
+
     @Test
     public void test5_N_insert_emptyfile_not_found_insert_found() throws IOException, InterruptedException {
         //empty file
         dictionary = new Dictionary("N2",5000);
-        String path ="C:\\Users\\LeNoVo\\Desktop\\gh\\src\\test6.txt";
+        String path ="/home/yousef/Downloads/nnnn/DSA_Perfect_Hashing_O_n__O_n2/src/test6.txt";
         dictionary.BatchInsert(path);
         assertEquals(dictionary.search("Any thing"), false);
         dictionary.insert("Any thing");
@@ -146,7 +147,7 @@ public class CLITest {
     public void test6_N_deleteall() throws IOException, InterruptedException {
         //delete all
         dictionary = new Dictionary("N2",5000);
-        String path ="C:\\Users\\LeNoVo\\Desktop\\gh\\src\\test3.txt";
+        String path ="/home/yousef/Downloads/nnnn/DSA_Perfect_Hashing_O_n__O_n2/src/test3.txt";
         dictionary.BatchInsert(path);
         assertEquals(dictionary.search("NZqVpZTFgFkGRoEEXdhM"), true);
         dictionary.BatchDelete(path);
@@ -157,8 +158,8 @@ public class CLITest {
         //delete some elm from many elm
         //add add delete
         dictionary = new Dictionary("N2",6000);
-        String path1 ="C:\\Users\\LeNoVo\\Desktop\\gh\\src\\test1.txt";
-        String path3="C:\\Users\\LeNoVo\\Desktop\\gh\\src\\test3.txt";
+        String path1 ="/home/yousef/Downloads/nnnn/DSA_Perfect_Hashing_O_n__O_n2/src/test1.txt";
+        String path3="/home/yousef/Downloads/nnnn/DSA_Perfect_Hashing_O_n__O_n2/src/test3.txt";
         dictionary.BatchInsert(path1);
         assertEquals(dictionary.search("FBCBAC"), true);
         dictionary.BatchInsert(path3);
@@ -171,8 +172,8 @@ public class CLITest {
         //delete some elm from many elm
         //add  delete add
         dictionary = new Dictionary("N2",6000);
-        String path1 ="C:\\Users\\LeNoVo\\Desktop\\gh\\src\\test1.txt";
-        String path3="C:\\Users\\LeNoVo\\Desktop\\gh\\src\\test3.txt";
+        String path1 ="/home/yousef/Downloads/nnnn/DSA_Perfect_Hashing_O_n__O_n2/src/test1.txt";
+        String path3="/home/yousef/Downloads/nnnn/DSA_Perfect_Hashing_O_n__O_n2/src/test3.txt";
         dictionary.BatchInsert(path3);
         assertEquals(dictionary.search("rDYuTxZZiwyuCcIqXljy"), true);
         assertEquals(dictionary.search("FBCBAC"), false);
@@ -191,7 +192,7 @@ public class CLITest {
         //delete some elm from many elm
         //search
         dictionary = new Dictionary("N",6000);
-        String path3="C:\\Users\\LeNoVo\\Desktop\\gh\\src\\test3.txt";
+        String path3="/home/yousef/Downloads/nnnn/DSA_Perfect_Hashing_O_n__O_n2/src/test3.txt";
         dictionary.BatchInsert(path3);
         boolean x =dictionary.search("vohszQMNFhNjaeUuKACT");
 
@@ -208,8 +209,8 @@ public class CLITest {
         //delete some elm from many elm
         //add  delete add
         dictionary = new Dictionary("N",6000);
-        String path1 ="C:\\Users\\LeNoVo\\Desktop\\gh\\src\\test1.txt";
-        String path3="C:\\Users\\LeNoVo\\Desktop\\gh\\src\\test3.txt";
+        String path1 ="/home/yousef/Downloads/nnnn/DSA_Perfect_Hashing_O_n__O_n2/src/test1.txt";
+        String path3="/home/yousef/Downloads/nnnn/DSA_Perfect_Hashing_O_n__O_n2/src/test3.txt";
         boolean x =dictionary.search("vohszQMNFhNjaeUuKACT");
         assertEquals("Testing search",x,false);
         dictionary.BatchInsert(path3);
@@ -226,7 +227,7 @@ public class CLITest {
     public void test13_N_insert() throws IOException, InterruptedException {
         //insert 1000000
         dictionary = new Dictionary("N",1000000);
-        String path ="C:\\Users\\LeNoVo\\Desktop\\gh\\src\\test7.txt";
+        String path ="/home/yousef/Downloads/nnnn/DSA_Perfect_Hashing_O_n__O_n2/src/test7.txt";
         dictionary.BatchInsert(path);
         assertEquals(dictionary.search("QmDnZWyuxrrDFsQQHnla"), true);
         dictionary.delete("QmDnZWyuxrrDFsQQHnla");

@@ -57,7 +57,6 @@ public class n_Hashing implements Perfect_Hashing_Interface {
             }
         }
         public int[] hash() throws InterruptedException {
-            System.out.println("Rehash");
             Random random = new Random();
             a = abs(random.nextInt() + 5);
             b = abs(random.nextInt() + 5);
@@ -70,21 +69,12 @@ public class n_Hashing implements Perfect_Hashing_Interface {
             }
             if(causedRehash != null)
                 beforeHashing.add(causedRehash);
-            // System.out.println(beforeHashing.size());
-            //    causedRehash = null;
+
             String[] buffer = new String[(int)m];
-            // internalValues = new String[((int)(this.m))];
-//            for(int i = 0; i < this.m; i++){
-//                internalValues[i] = null;
-//            }
             int[] returned = new int[2];
             for(String iter: beforeHashing){
                 long x=abs(toKey(iter));
                 int index = (int)abs((hashFunction(x)));
-                if(iter.equals("iQPKEPXs")){
-                    System.out.println("I'M IN rehash, current key is: "+ index);
-                    System.out.println("In hash, Current a b is: " + this.a + " " + this.b);
-                }
                 if(buffer[index] != null){
                     if(buffer[index].equals(iter)){
                         continue;
@@ -108,14 +98,8 @@ public class n_Hashing implements Perfect_Hashing_Interface {
         public boolean search(String wanted) {
             if(internalValues == null)
                 return false;
-            System.out.println(wanted);
             long x= abs(toKey(wanted));
             int index = (int)abs(hashFunction(x));
-            if(wanted.equals("iQPKEPXs")){
-                System.out.println("I'M IN SEARCH, current key is: "+ index);
-                System.out.println("In search, Current a b is: " + this.a + " "+ this.b);
-            }
-            System.out.println("I'm here: " + internalValues[index]);
             return Objects.equals(internalValues[index], wanted);
         }
         public boolean delete(String value) {
@@ -166,16 +150,10 @@ public class n_Hashing implements Perfect_Hashing_Interface {
     }
     public boolean search(String value){
         int key = (int)abs(hashFunction(abs(toKey(value))));
-        if(value.equals("iQPKEPXs")){
-            System.out.println("searching for me? I'm what you want, key is: "+ key);
-        }
         return mainHashing[key].search(value);
     }
     public int insert(String value) throws InterruptedException {
         int key = (int)abs(hashFunction(abs(toKey(value))));
-        if(value.equals("iQPKEPXs")){
-            System.out.println("I'm what you want, key is: "+ key);
-        }
         int state = mainHashing[key].insert(value);
         if(state == 0){// Found
             return 0;
